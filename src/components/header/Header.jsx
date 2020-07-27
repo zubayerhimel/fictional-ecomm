@@ -10,11 +10,17 @@ export default function Header() {
         <Logo className="logo" />
       </Link>
       <div className="options">
+        <Link to="/" className="option">
+          HOME
+        </Link>
         <Link to="/shop" className="option">
           SHOP
         </Link>
         <Link to="/contact" className="option">
           CONTACT
+        </Link>
+        <Link to="/auth" className="option">
+          SIGN IN
         </Link>
       </div>
     </div>
