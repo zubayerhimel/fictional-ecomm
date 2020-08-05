@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACP,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CAUvB;;AAbD,AAKE,QALM,CAKN,MAAM,CAAC;EACL,MAAM,EAAE,MAAM;CACf;;AAPH,AASE,QATM,CASN,QAAQ,CAAC;EACP,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;CAC/B",
+    "sources": [
+        "SignInStyles.scss"
+    ],
+    "names": [],
+    "file": "SignInStyles.css"
+}
