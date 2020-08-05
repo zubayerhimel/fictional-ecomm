@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FormInput from "../form_input/FormInput";
 import CustomButton from "../custom_button/CustomButton";
-import { signInWithGoogle } from "../../utils/FirebaseAuth";
+import { auth, signInWithGoogle } from "../../utils/FirebaseAuth";
 import "./SignInStyles.scss";
 
 class SingIn extends Component {
@@ -15,9 +15,16 @@ class SingIn extends Component {
   }
 
   //   Called when form is submitted
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //   Called when input field is written
@@ -27,6 +34,7 @@ class SingIn extends Component {
   };
 
   render() {
+    const { email, password } = this.state;
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
@@ -36,7 +44,7 @@ class SingIn extends Component {
             type="email"
             name="email"
             id="email"
-            value={this.state.email}
+            value={email}
             handleChange={this.handleChange}
             autoComplete="off"
             label="Email"
@@ -46,7 +54,7 @@ class SingIn extends Component {
             type="password"
             name="password"
             id="password"
-            value={this.state.password}
+            value={password}
             handleChange={this.handleChange}
             label="Password"
             required
