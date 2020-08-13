@@ -6,8 +6,11 @@ import Homepage from "./components/homepage/Homepage";
 import Shop from "./components/shop/Shop";
 import Header from "./components/header/Header";
 import AuthenticatePage from "./components/authenticate_page/AuthenticatePage";
+import Checkout from "./components/checkout_page/Checkout";
 import { auth, createUserProfileDocument } from "./utils/FirebaseAuth";
 import { setCurrentUser } from "./components/redux/user/UserAction";
+import { selectCurrentUser } from "./components/redux/user/UserSelectors";
+import { createStructuredSelector } from "reselect";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -39,7 +42,8 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/shop" component={Shop} />
+          <Route path="/shop" component={Shop} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
             path="/auth"
@@ -57,8 +61,8 @@ class App extends Component {
   }
 }
 
-const mapsStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapsStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
